@@ -1,0 +1,28 @@
+.pictures__wrapper {
+  column-count: 5;
+  column-gap: 1em;
+  @media screen and (max-width: 1439px){
+    column-count: 4;
+  }
+  @media screen and (max-width: 1023px){
+    column-count: 3;
+  }
+  @media screen and (max-width: 767px){
+    column-count: 2;
+  }
+}
+
+.picture {
+  img {
+    margin-bottom: 3em;
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+  }
+  @media screen and (max-width: 767px){
+    img{
+      margin-bottom: 1.5em;
+      border-radius: 10px;
+    }
+  }
+}

@@ -1,0 +1,42 @@
+
+
+//initial styles
+@import "./initial-styles/nullstyle.scss";
+@import "./initial-styles/mixins";
+@import "./initial-styles/variables";
+@import "./initial-styles/fonts";
+
+//component styles
+@import "./components/pictures.scss";
+@import './components/header.scss';
+@import './components/search.scss';
+
+html{
+  scroll-behavior: smooth;
+}
+
+
+#root {
+  height: 100%;
+  // background-color: rgb(48, 46, 51);
+}
+
+.default-layout {
+  height: 100%;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+  // background-color: rgb(48, 46, 51);
+}
+
+.main{
+  padding: 40px 20px;
+}
+
+.loading-spinner {
+  position: absolute;
+  width: 150px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
