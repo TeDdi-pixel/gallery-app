@@ -7,7 +7,7 @@ import {
 import { useEffect, useState } from "react";
 import { storage } from "../services/firebase/config";
 
-export const useImages = ( folder: string ) => {
+export const useImages = (folder: string) => {
   const [images, setImages] = useState<string[] | null>(
     JSON.parse(localStorage.getItem("images") ?? "[]")
   );
@@ -17,25 +17,25 @@ export const useImages = ( folder: string ) => {
   useEffect(() => {
     if (localStorage.getItem("images")) {
       return;
+    }
+    
+    if (!images && requestCount < 2) {
+      listAll(imagesRef)
+        .then((res) =>
+          Promise.all(res.items.map((item) => getDownloadURL(item)))
+        )
+        .then((urls: string[]) => {
+          setImages(urls);
+          setRequestCount(requestCount + 1);
+          localStorage.setItem("images", JSON.stringify(urls));
+        })
+        .catch((error: Error) => {
+          console.error(
+            `Error listing all items in folder cutesexyrobutts: ${error}`
+          );
+        });
     } else {
-      if (!images && requestCount < 2) {
-        listAll(imagesRef)
-          .then((res) =>
-            Promise.all(res.items.map((item) => getDownloadURL(item)))
-          )
-          .then((urls: string[]) => {
-            setImages(urls);
-            setRequestCount(requestCount + 1);
-            localStorage.setItem("images", JSON.stringify(urls));
-          })
-          .catch((error: Error) => {
-            console.error(
-              `Error listing all items in folder cutesexyrobutts: ${error}`
-            );
-          });
-      } else {
-        console.log("Превышено максимальное количество запросов");
-      }
+      console.log("Превышено максимальное количество запросов");
     }
   }, [imagesRef, requestCount, images]);
   return { images };
