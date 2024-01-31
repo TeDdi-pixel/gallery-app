@@ -109,7 +109,14 @@ const HomePage = () => {
                 className="picture"
                 key={index}
               >
-                <LazyLoadImage src={img.urls.small} alt="" effect="blur" />
+                <LazyLoadImage
+                  src={img.urls.small}
+                  alt=""
+                  effect="blur"
+                  style={{
+                    transition: "scale ease 0.15s,box-shadow ease 0.2s",
+                  }}
+                />
               </a>
             ))}
       </Fancybox>

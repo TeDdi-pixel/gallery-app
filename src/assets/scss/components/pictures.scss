@@ -1,28 +1,39 @@
 .pictures__wrapper {
   column-count: 5;
   column-gap: 1em;
-  @media screen and (max-width: 1439px){
+  @media screen and (max-width: 1439px) {
     column-count: 4;
   }
-  @media screen and (max-width: 1023px){
+  @media screen and (max-width: 1023px) {
     column-count: 3;
   }
-  @media screen and (max-width: 767px){
+  @media screen and (max-width: 767px) {
     column-count: 2;
   }
 }
 
 .picture {
+  transition: all ease 0.2s;
+  position: relative;
   img {
     margin-bottom: 3em;
     width: 100%;
     height: auto;
     border-radius: 15px;
   }
-  @media screen and (max-width: 767px){
-    img{
+  &:hover {
+    
+    img {
+      box-shadow: 3px 7px 20px rgb(144, 144, 144);
+      scale: 1.05;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    img {
       margin-bottom: 1.5em;
       border-radius: 10px;
     }
   }
 }
+
+
