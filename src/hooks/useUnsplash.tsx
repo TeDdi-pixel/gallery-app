@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { TypeImage, TypeQuery } from "../pages/home/HomePage";
 import axios from "axios";
+import { TypeImage, TypeQuery } from "../pages/home/HomePage";
 
 export const useUnsplash = () => {
   const [images, setImages] = useState<TypeImage[]>([]);
-  const [requestCount, setRequestCount] = useState<number>(0);
+  //   const [requestCount, setRequestCount] = useState<number>(0);
   const [results, setResults] = useState<TypeImage[]>([]);
 
   const getImages = async () => {
@@ -17,7 +17,7 @@ export const useUnsplash = () => {
       );
       setImages((prevImages) => [...prevImages, ...result.data]);
 
-      setRequestCount(requestCount + 1);
+      //   setRequestCount(requestCount + 1);
     } catch (error) {
       console.log(error);
     }
@@ -33,14 +33,16 @@ export const useUnsplash = () => {
   const onSubmit = async (query: TypeQuery) => {
     // if (requestCount < 2) {
     try {
-      setRequestCount(0);
+      //   setRequestCount(0);
       const result = await axios.get(
         `https://api.unsplash.com/search/photos?per_page=40&order_by=relevant&query=${
-          query.query
+          query
         }&client_id=${import.meta.env.VITE_UNSPLASH_ACCESS_TOKEN}`
       );
+      console.log(query);
+      
       setResults(result.data.results);
-      setRequestCount(requestCount + 1);
+      //   setRequestCount(requestCount + 1);
     } catch (error) {
       console.log(error);
     }

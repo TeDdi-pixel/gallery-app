@@ -9,7 +9,7 @@ const Images = ({ images }: { images: TypeImage[] }) => {
               data-fancybox={`image${index}`}
               href={img.urls.regular}
               className="picture"
-              key={img.id}
+              key={index}
             >
               <LazyLoadImage src={img.urls.small} alt="" effect="blur" />
             </a>
