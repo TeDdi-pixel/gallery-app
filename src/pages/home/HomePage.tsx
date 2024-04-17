@@ -94,7 +94,7 @@ const HomePage = () => {
         {results.length > 0
           ? results.map((img: TypeImage, index: number) => (
               <a
-                data-fancybox={`image${index}`}
+                data-fancybox={`gallery`}
                 href={img.urls.regular}
                 className="picture"
                 key={index}
@@ -108,7 +108,7 @@ const HomePage = () => {
             ))
           : images.map((img: TypeImage, index: number) => (
               <a
-                data-fancybox={`image${index}`}
+                data-fancybox={`gallery`}
                 href={img.urls.regular}
                 className="picture"
                 key={index}
